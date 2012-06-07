@@ -9,7 +9,6 @@ set_include_path(implode(PATH_SEPARATOR, array(
 // Quickfire autoloader.
 spl_autoload_register(function($className){
     $filename = str_replace("\\","/", $className) . ".php";
-    echo $filename."\n";
     require_once $filename;
 });
 

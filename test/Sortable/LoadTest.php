@@ -15,7 +15,7 @@ class LoadTest extends \PHPUnit_Framework_TestCase {
      * @test
      * Largest container
      */
-    public function mediumSizedContainer(){
+    public function maxSizeContainer(){
         $models = array();
         for($i=0; $i<9997; $i++){
             $num = ($i%2 == 0) ? $i+1 : $i;
@@ -30,7 +30,7 @@ class LoadTest extends \PHPUnit_Framework_TestCase {
         $this->withTiming(function()use($container){
             // Implicit invocation
             count($container);
-
+            return "Max size container run";
         });
 
         unset($container, $models);
@@ -51,6 +51,7 @@ class LoadTest extends \PHPUnit_Framework_TestCase {
             uasort($models, function($l, $r){
                 return strnatcasecmp($r->name, $l->name);
             });
+            return "Normal uasort comparison";
         });
 
     }
@@ -61,9 +62,9 @@ class LoadTest extends \PHPUnit_Framework_TestCase {
      */
     private function withTiming($yield){
         $start = microtime(true);
-        $yield();
+        $prefix = $yield();
         $time = microtime(true) - $start;
-        echo sprintf("Took %.5f seconds\n", $time);
+        echo sprintf("%s took %.5f seconds\n", $prefix, $time);
     }
 
 

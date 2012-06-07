@@ -2,7 +2,7 @@
 
 namespace Sortable;
 
-class SortBy extends Container {
+class SortBy extends Sortable {
 
     const UP = "up";
     const DOWN = "down";

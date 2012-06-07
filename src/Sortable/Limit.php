@@ -2,9 +2,7 @@
 
 namespace Sortable;
 
-require_once 'Container.php';
-
-class Limit extends Container {
+class Limit extends Sortable {
     private $offset;
     private $limit;
 
